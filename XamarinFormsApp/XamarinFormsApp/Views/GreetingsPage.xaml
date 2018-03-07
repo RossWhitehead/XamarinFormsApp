@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinFormsApp.Views.GreetingsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <LayoutOptions x:Key="horizontalOptions"
+                           Alignment="Center" 
+                           Expands="True" />
+
+            <LayoutOptions x:Key="verticalOptions"
+                           Alignment="Center"
+                           Expands="True" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS" Value="0, 20, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="{StaticResource horizontalOptions}"
+            VerticalOptions="{StaticResource verticalOptions}">
+            <BoxView 
+                Color="Blue"
+                Opacity="{Binding Source={x:Reference slider}, Path=Value}"/>
+            <Label 
+                BindingContext="{x:Reference slider}"
+                Text="{Binding Value, StringFormat='Value is {0:F2}'}" 
+                Opacity="{Binding Value}" 
+                x:Name="sliderLabel"/>
+            <Slider 
+                x:Name="slider" 
+                Value="0.5"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

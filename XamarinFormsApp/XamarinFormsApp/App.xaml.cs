@@ -12,7 +12,6 @@ namespace XamarinFormsApp
 		{
 			InitializeComponent();
 
-
             MainPage = new MainPage();
         }
 

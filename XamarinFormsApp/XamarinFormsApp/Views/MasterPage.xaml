@@ -1,0 +1,37 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="using:XamarinFormsApp.Views"
+             x:Class="XamarinFormsApp.Views.MasterPage"
+             Padding="0,40,0,0"
+             Icon="hamburger.png"
+             Title="Xamarin sandbox">
+    <StackLayout>
+        <ListView x:Name="listView">
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type views:MasterPageItem}">
+                    <views:MasterPageItem Title="Items" IconSource="contacts.png" TargetType="{x:Type views:ItemsPage}" />
+                    <views:MasterPageItem Title="Publisher" IconSource="todo.png" TargetType="{x:Type views:PublisherPage}" />
+                    <views:MasterPageItem Title="App Status History" IconSource="reminders.png" TargetType="{x:Type views:AppStatusHistoryPage}" />
+                    <views:MasterPageItem Title="Greetings" IconSource="reminders.png" TargetType="{x:Type views:GreetingsPage}" />
+                    <views:MasterPageItem Title="Clock" IconSource="reminders.png" TargetType="{x:Type views:ClockPage}" />
+                    <views:MasterPageItem Title="Smart Reply" IconSource="reminders.png" TargetType="{x:Type views:SmartReplyPage}" />
+                    <views:MasterPageItem Title="About" IconSource="reminders.png" TargetType="{x:Type views:AboutPage}" />
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding IconSource}" />
+                            <Label Grid.Column="1" Text="{Binding Title}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
