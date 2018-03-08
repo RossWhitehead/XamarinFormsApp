@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microcharts.Forms" Version="0.8.3-pre" />
     <PackageReference Include="NetMQ" Version="4.0.0.156-pre" />
     <PackageReference Include="TensorFlowSharp" Version="1.5.0" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
@@ -40,6 +41,9 @@
     <Compile Update="Views\PublisherPage.xaml.cs">
       <DependentUpon>PublisherPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\TidePredictorPage.xaml.cs">
+      <DependentUpon>TidePredictorPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -59,6 +63,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SmartReplyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TidePredictorPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

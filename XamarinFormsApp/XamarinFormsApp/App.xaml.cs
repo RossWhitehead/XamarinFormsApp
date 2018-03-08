@@ -7,12 +7,10 @@ namespace XamarinFormsApp
 {
 	public partial class App : Application
 	{
-
-		public App ()
+		public App (ITidePredictor predictor)
 		{
 			InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new MainPage(predictor);
         }
 
 		protected override void OnStart ()

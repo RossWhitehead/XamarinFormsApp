@@ -8,8 +8,12 @@ namespace XamarinFormsApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MainPage : MasterDetailPage
 	{
-		public MainPage ()
+        private ITidePredictor predictor;
+
+        public MainPage (ITidePredictor predictor)
 		{
+            this.predictor = predictor;
+
 			InitializeComponent ();
 
             masterPage.ListView.ItemSelected += OnItemSelected;
@@ -23,7 +27,14 @@ namespace XamarinFormsApp.Views
             {
                 if (e.SelectedItem is MasterPageItem item)
                 {
-                    Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
+                    if (item.TargetType == typeof(TidePredictorPage))
+                    {
+                        Detail = new NavigationPage(new TidePredictorPage(this.predictor));
+                    }
+                    else
+                    {
+                        Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
+                    }
                     masterPage.ListView.SelectedItem = null;
                     IsPresented = false;
                 }

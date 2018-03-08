@@ -15,6 +15,7 @@
                     <views:MasterPageItem Title="Greetings" IconSource="reminders.png" TargetType="{x:Type views:GreetingsPage}" />
                     <views:MasterPageItem Title="Clock" IconSource="reminders.png" TargetType="{x:Type views:ClockPage}" />
                     <views:MasterPageItem Title="Smart Reply" IconSource="reminders.png" TargetType="{x:Type views:SmartReplyPage}" />
+                    <views:MasterPageItem Title="TidePredictor" IconSource="reminders.png" TargetType="{x:Type views:TidePredictorPage}" />
                     <views:MasterPageItem Title="About" IconSource="reminders.png" TargetType="{x:Type views:AboutPage}" />
                 </x:Array>
             </ListView.ItemsSource>
