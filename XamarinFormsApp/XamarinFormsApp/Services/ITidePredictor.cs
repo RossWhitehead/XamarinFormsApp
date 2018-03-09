@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace XamarinFormsApp
+namespace XamarinFormsApp.Services
 {
     public interface ITidePredictor
     {

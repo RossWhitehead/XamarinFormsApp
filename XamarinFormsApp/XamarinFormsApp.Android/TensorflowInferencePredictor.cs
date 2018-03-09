@@ -3,6 +3,7 @@ using System.Linq;
 using Android.Content.Res;
 using Org.Tensorflow.Contrib.Android;
 using XamarinFormsApp.Droid;
+using XamarinFormsApp.Services;
 
 [assembly: Xamarin.Forms.Dependency(typeof(TensorflowInferencePredictor))]
 namespace XamarinFormsApp.Droid

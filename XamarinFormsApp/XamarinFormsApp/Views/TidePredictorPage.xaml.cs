@@ -3,6 +3,8 @@ using Microcharts;
 using SkiaSharp;
 using System;
 using System.Linq;
+using Autofac;
+using XamarinFormsApp.Services;
 
 namespace XamarinFormsApp.Views
 {
@@ -86,9 +88,12 @@ namespace XamarinFormsApp.Views
             }
         };
 
-        public TidePredictorPage(ITidePredictor predictor)
+        public TidePredictorPage()
         {
-            this.predictor = predictor;
+            using (var scope = App.DependencyContainer.BeginLifetimeScope())
+            {
+                this.predictor = scope.Resolve<ITidePredictor>();
+            }
 
             InitializeComponent();
 

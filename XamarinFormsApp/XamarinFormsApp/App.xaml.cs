@@ -2,6 +2,8 @@
 
 using XamarinFormsApp.Views;
 using Xamarin.Forms;
+using Autofac;
+using XamarinFormsApp.Services;
 
 namespace XamarinFormsApp
 {
@@ -9,11 +11,18 @@ namespace XamarinFormsApp
 	{
 		public App (ITidePredictor predictor)
 		{
-			InitializeComponent();
-            MainPage = new MainPage(predictor);
+            var containerBuilder = new ContainerBuilder();
+            containerBuilder.RegisterInstance(predictor);
+            DependencyContainer = containerBuilder.Build();
+
+            InitializeComponent();
+
+            MainPage = new MainPage();
         }
 
-		protected override void OnStart ()
+        public static IContainer DependencyContainer { get; set; }
+
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}

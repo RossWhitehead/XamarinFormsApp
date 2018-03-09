@@ -5,16 +5,12 @@ using Xamarin.Forms.Xaml;
 
 namespace XamarinFormsApp.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MainPage : MasterDetailPage
-	{
-        private ITidePredictor predictor;
-
-        public MainPage (ITidePredictor predictor)
-		{
-            this.predictor = predictor;
-
-			InitializeComponent ();
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MainPage : MasterDetailPage
+    {
+        public MainPage()
+        {
+            InitializeComponent();
 
             masterPage.ListView.ItemSelected += OnItemSelected;
 
@@ -27,18 +23,21 @@ namespace XamarinFormsApp.Views
             {
                 if (e.SelectedItem is MasterPageItem item)
                 {
-                    if (item.TargetType == typeof(TidePredictorPage))
-                    {
-                        Detail = new NavigationPage(new TidePredictorPage(this.predictor));
-                    }
-                    else
-                    {
-                        Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
-                    }
+                    Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
                     masterPage.ListView.SelectedItem = null;
                     IsPresented = false;
                 }
             }
         }
-	}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var tidePredictorModelService = new Services.TidePredictorModelService();
+            var prediction = tidePredictorModelService.Predict();
+
+            DisplayAlert("Tide Predictions", string.Join(", ", prediction), "OK");
+        }
+    }
 }
